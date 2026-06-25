@@ -1,0 +1,65 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: quye-platform
+
+  # ====================== 数据库配置 ======================
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/quye?useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true&characterEncoding=utf8
+    username: root
+    password: 666666
+
+  # ====================== Redis 配置（关键部分） ======================
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      password: 666666          # ← 必须有这一行
+      database: 1
+
+      lettuce:
+        pool:
+          max-active: 10
+          max-idle: 10
+          min-idle: 1
+          time-between-eviction-runs: 10s
+  # ====================== RabbitMQ 配置 ======================
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: admin
+    password: 123456
+    virtual-host: /
+    listener:
+      simple:
+        acknowledge-mode: manual
+  # ====================== Jackson 配置 ======================
+  jackson:
+    default-property-inclusion: non_null
+
+  # ====================== MVC 配置 ======================
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
+
+  servlet:
+    multipart:
+      max-file-size: 8MB
+      max-request-size: 72MB
+
+quye:
+  upload-dir: ${QUYE_UPLOAD_DIR:../nginx-1.18.0/html/Frontend/imgs}
+
+# ====================== MyBatis-Plus 配置 ======================
+mybatis-plus:
+  type-aliases-package: com.quye.entity
+  configuration:
+    map-underscore-to-camel-case: true
+
+logging:
+  level:
+    com.quye: debug

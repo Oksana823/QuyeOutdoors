@@ -1,0 +1,24 @@
+# Java / Maven
+target/
+*.log
+
+# IDE
+.idea/
+*.iml
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Nginx runtime logs/temp
+nginx-1.18.0/logs/
+nginx-1.18.0/temp/
+nginx-1.18.0/client_body_temp/
+nginx-1.18.0/proxy_temp/
+nginx-1.18.0/fastcgi_temp/
+nginx-1.18.0/uwsgi_temp/
+nginx-1.18.0/scgi_temp/
+
+# Uploaded runtime images if you don't want demo uploads
+# nginx-1.18.0/html/Frontend/imgs/journeys/*/*/*.jpg
